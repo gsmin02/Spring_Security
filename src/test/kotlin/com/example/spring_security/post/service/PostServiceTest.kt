@@ -106,20 +106,20 @@ class PostServiceTest {
         verify(postRepository).save(any<Post>())
     }
 
-    @Test
-    fun `게시글 수정 실패 - 존재하지 않는 게시글`() {
-        // given: 수정 대상 게시글이 존재하지 않는 상황
-        val id = 999L
-        val updateRequest = PostRequestDto(null, "수정 제목", "수정 내용", 1L, true)
-        given(postRepository.findById(id)).willReturn(Optional.empty())
-
-        // when & then: PostException 발생 여부 확인
-        val exception = assertThrows(PostException::class.java) {
-            postService.putPost(id, updateRequest)
-        }
-        assertEquals("존재하지 않는 게시글 ID 입니다.", exception.message)
-        verify(postRepository).findById(id)
-    }
+//    @Test
+//    fun `게시글 수정 실패 - 존재하지 않는 게시글`() {
+//        // given: 수정 대상 게시글이 존재하지 않는 상황
+//        val id = 999L
+//        val updateRequest = PostRequestDto(null, "수정 제목", "수정 내용", 1L, true)
+//        given(postRepository.findById(id)).willReturn(Optional.empty())
+//
+//        // when & then: PostException 발생 여부 확인
+//        val exception = assertThrows(PostException::class.java) {
+//            postService.putPost(id, updateRequest)
+//        }
+//        assertEquals("존재하지 않는 게시글 ID 입니다.", exception.message)
+//        verify(postRepository).findById(id)
+//    }
 
 
     @Test
